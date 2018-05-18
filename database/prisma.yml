@@ -1,0 +1,14 @@
+#service: api
+#stage: dev
+
+datamodel: datamodel.graphql
+
+# to enable auth, provide
+secret: kunle-odusan
+#disableAuth: false
+#cluster: public-amberhyena-808/prisma-eu1
+endpoint: https://eu1.prisma.sh/public-amberhyena-808/api/dev
+hooks:
+  post-deploy:
+    - graphql get-schema --project database
+    - graphql prepare

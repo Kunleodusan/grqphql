@@ -1,0 +1,41 @@
+# import Event, EventWhereInput, EventOrderByInput, EventWhereUniqueInput, EventInput, EventUpdateInput  from "./generated/prisma.graphql"
+
+type Query {
+    hello(name: String!): String!
+    events(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Event!]!
+    event(where: EventWhereUniqueInput!): Event!
+}
+
+type Mutation {
+    createEvent(data: EventInput!): Event!
+    editEvent(data: EventInput!, id: String!): Event!
+    deleteEvent(id: String!): Event!
+
+    register(data: UserCreateInput): AuthPayload
+    login(email: String!, password: String!): AuthPayload
+}
+
+input UserCreateInput {
+  email: String!
+  name: String!
+  password: String!
+}
+
+input EventInput {
+    title: String!
+    startDate: DateTime!
+    endDate: DateTime!
+    description: String!
+}
+
+type AuthPayload {
+    token: String
+    user: User
+}
+
+type User {
+    id: ID!
+    email: String!
+    name: String!
+    events: [Event!]!
+}

@@ -1,0 +1,16 @@
+type Event {
+    id: ID! @unique
+    title: String!
+    startDate: DateTime!
+    endDate: DateTime!
+    description: String!
+    createdBy: User
+}
+
+type User {
+    id: ID! @unique
+    email: String! @unique
+    name: String!
+    password: String!
+    events: [Event!]!
+}
