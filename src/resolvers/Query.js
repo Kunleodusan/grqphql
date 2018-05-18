@@ -6,6 +6,6 @@ function hello(root, args, context, info) {
 }
 
 module.exports = Object.assign({},
-	hello,
+		{hello},
 	require('./event/EventQueries')
 );
